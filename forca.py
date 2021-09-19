@@ -19,22 +19,22 @@ class Forca(object):
 		estado5 --> cabeça, tronco, 2 braços, 1 perna
 		estado6 --> cabeça, tronco, 2 braços, 2 pernas
 		"""
-		self.__estadoAtual = 1
+		self._estadoAtual = 1
 
 	def getEstadoAtual(self):
 		"""
 		Retorna um valor inteiro entre 1 a 6.
 		"""
-		return self.__estadoAtual
+		return self._estadoAtual
 
 	def setEstadoAtual(self, numero):
 		"""
 		Insira um valor inteiro entre 1 a 6.
 		"""
-		self.__estadoAtual = numero
+		self._estadoAtual = numero
 	
 	def printForca(self):
 		"""
 		Imprime a forca no seu estado atual
 		"""
-		print(estados[self.__estadoAtual])
+		print(Forca.estados[self._estadoAtual])

@@ -1,16 +1,16 @@
 class Placar(object):
 	def __init__(self):
-		self.__acertos = 0
-		self.__erros = 0
+		self._acertos = 0
+		self._erros = 0
 
 	def getAcertos(self):
-		return self.__acertos
+		return self._acertos
 
 	def getErros(self):
-		return self.__erros
+		return self._erros
 
 	def setAcertos(self, numero):
-		self.__acertos = numero
+		self._acertos = numero
 
 	def setErros(self):
 		self._erros = numero
