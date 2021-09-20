@@ -1,47 +1,44 @@
 class Inspetor(object):
 	def __init__(self, palavra):
-		self.__palavraSecreta = palavra
-		self.__letrasDigitadas = []
-		self.__letrasCertas = []
-		self.__letrasErradas = []
-
+		self._palavraSecreta = palavra
+		self._letrasDigitadas = []
+		self._letrasCertas = []
+		self._letrasErradas = []
 
 	def giveLetra(self, letra):
-		self.__letrasDigitadas.append(letra)
+		self._letrasDigitadas.append(letra)
 		
-		if letra in self.__palavraSecreta:
-			self.__letrasCertas.append(letra)
-			self.__letrasCertas.sort()
-
-			self.__acertos += 1
+		if letra in self._palavraSecreta:
+			self._letrasCertas.append(letra)
+			self._letrasCertas.sort()
 
 		else:
-			self.__letrasErradas.append(letra)
-			self.__letrasErradas.sort()
-
-			self.__erros += 1
-
+			self._letrasErradas.append(letra)
+			self._letrasErradas.sort()
+			
 	def printLetrasDigitadas(self):
-		print("Letras Digitadas:", end = " ")
-		for letra in self.__letrasDigitadas:
-			if letra != self.__letrasDigitadas[-1]:
+		print("Letras Digitadas: [", end = " ")
+		for letra in self._letrasDigitadas:
+			if letra != self._letrasDigitadas[-1]:
 				print(letra + ",", end = " ")
 			else:
-				print(letra+".")
+				print(letra, end = "")
+		print("]")
 
 	def printAcertos(self):
-		for letra in self.__palavraSecreta:
-			if letra in self.__letrasCertas:
+		print("\nPalavra Secreta:", end = " ")
+		for letra in self._palavraSecreta:
+			if letra in self._letrasCertas:
 				print(letra, end = "")
 			else:
 				print("-", end = "")
+		print()
 
 	def getLetrasDigitadas(self):
-		return self.__letrasDigitadas
+		return self._letrasDigitadas
 
 	def getLetrasCertas(self):
-		return self.__letrasCertas
+		return self._letrasCertas
 
 	def getLetrasErradas(self):
-		return self.__letrasErradas
-
+		return self._letrasErradas

@@ -13,6 +13,10 @@ iguana, impala, inhambu, \
 jabuti, jacaré, jacu, jacuaçu, jacutinga, jaguar, jamanta, jandaia, jaó, japu, japuaçu, jararaca, jataí, jaú, javali, jegue, jiboia, joaninha, joão-de-barro, jumento, juriti, \
 ".split(", ")
 
-temas = ["animais"]
-index_temas = {1:"animais"}
-temas_palavras = {"animais":animais} 
+comidas ="\
+Abacate, Abiu, Abricó, Abutua Grande, Açaí, Acaíba, Acara-uba, Acerola, Acumã, Acuri, Ajarí, Ajuru, Akee, Alfarroba, Algarrobo, Amapá, \
+".split(", ")
+
+temas = ["animais","comidas"]
+index_temas = {1:"animais", 2:"comidas"}
+temas_palavras = {"animais":animais, "comidas":comidas}

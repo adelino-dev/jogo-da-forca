@@ -26,6 +26,9 @@ class Menu(object):
 
 		print("ou %i para Modo Aleatório." % (Menu.numeroDeTemas+1), end = "\n\n")
 
+	def printTema(self):
+		print("Tema:", self._tema)
+
 	def _escolherTema(self):
 		numEscolhido = int(input("Escolha um número:"))
 

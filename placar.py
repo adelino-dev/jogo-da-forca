@@ -12,5 +12,6 @@ class Placar(object):
 	def setAcertos(self, numero):
 		self._acertos = numero
 
-	def setErros(self):
+	def setErros(self, numero):
 		self._erros = numero
+	
