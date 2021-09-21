@@ -1,14 +1,14 @@
 import estados_da_forca as ef
 
 class Forca(object):
-	estado0 = ef.estado0
-	estado1 = ef.estado1
-	estado2 = ef.estado2
-	estado3 = ef.estado3
-	estado4 = ef.estado4
-	estado5 = ef.estado5
-	estado6 = ef.estado6
-	estados = {0:estado0, 1:estado1, 2:estado2, 3:estado3, 4:estado4, 5:estado5, 6:estado6}
+	_estado0 = ef.estado0
+	_estado1 = ef.estado1
+	_estado2 = ef.estado2
+	_estado3 = ef.estado3
+	_estado4 = ef.estado4
+	_estado5 = ef.estado5
+	_estado6 = ef.estado6
+	_estados = {0:_estado0, 1:_estado1, 2:_estado2, 3:_estado3, 4:_estado4, 5:_estado5, 6:_estado6}
 
 	def __init__(self):
 		"""
@@ -40,7 +40,7 @@ class Forca(object):
 		Imprime a forca no seu estado atual
 		"""
 		print("\n--------------")
-		for linha in Forca.estados[self._estadoAtual]:
+		for linha in Forca._estados[self._estadoAtual]:
 			print(linha)
 
 		print("--------------")
