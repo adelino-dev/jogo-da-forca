@@ -1,7 +1,7 @@
 from forca import Forca
 from placar import Placar
 from inspetor import Inspetor
-from menu import Menu
+from menu_antigo import Menu
 
 debugar = input("Debugar?") 
 
