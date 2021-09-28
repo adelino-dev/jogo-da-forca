@@ -1,17 +1,27 @@
-import Placar
+from placar import Placar
 
 class Jogador(object):
 	def __init__(self, nome):
 		self._nome = nome
-		self.placarAtual = Placar()
-		self.vitorias = 0
-		self.derrotas = 0
+		self._placarAtual = Placar()
+		self._vitorias = 0
+		self._derrotas = 0
 
 	def getVitorias(self):
-		return self.vitorias
+		return self._vitorias
+	def getDerrotas(self):
+		return self._derrotas
+	def getPlacarAtual(self):
+		return self._palacarAtual
 
-	def atualizarPlacar(self):
-		pass
+	def getNome(self):
+		return self._nome
 
-	def printPlacar():
+	def addAcerto(self):
+		self._placarAtual.addAcerto()
+
+	def addErro(self):
+		self._palacarAtual.addErro()
+
+	def printPlacar(self):
 		pass

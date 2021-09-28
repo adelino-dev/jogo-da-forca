@@ -1,10 +1,13 @@
 class Inspetor(object):
-	def __init__(self, palavra):
+	def __init__(self, palavra =""):
 		self._palavraSecreta = palavra
 		self._letrasDigitadas = []
 		self._letrasCertas = []
 		self._letrasErradas = []
 
+	def setPalavraSecreta(self, palavra):
+		self._palavraSecreta = palavras
+		
 	def giveLetra(self, letra):
 		self._letrasDigitadas.append(letra)
 		

@@ -3,7 +3,7 @@ class Menu(object):
 		self.opcoes = {}#num:opção
 		self.escolha = 0
 
-	def printOpcoes():
+	def printOpcoes(self):
 		print("--------------")
 		print("Escolha:")
 		for num in self.opcoes:
@@ -11,8 +11,8 @@ class Menu(object):
 			print(num, '-', opcao)
 		("--------------")
 
-	def pedirEscolha():
-		escolha = int(input("Digite um número:"))
+	def pedirEscolha(self):
+		self.escolha = int(input("Digite um número:"))
 
-	def getEscolha():
+	def getEscolha(self):
 		return self.escolha
