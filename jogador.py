@@ -12,7 +12,7 @@ class Jogador(object):
 	def getDerrotas(self):
 		return self._derrotas
 	def getPlacarAtual(self):
-		return self._palacarAtual
+		return self._placarAtual
 
 	def getNome(self):
 		return self._nome
@@ -21,7 +21,7 @@ class Jogador(object):
 		self._placarAtual.addAcerto()
 
 	def addErro(self):
-		self._palacarAtual.addErro()
+		self._placarAtual.addErro()
 
 	def printPlacar(self):
 		pass

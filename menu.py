@@ -1,18 +1,18 @@
 class Menu(object):
 	def __init__(self):
-		self.opcoes = {}#num:opção
-		self.escolha = 0
+		self._opcoes = {}#num:opção
+		self._escolha = 0
 
-	def printOpcoes(self):
+	def printOpcoes(self, fraseInicial = "Escolha:"):
 		print("--------------")
-		print("Escolha:")
-		for num in self.opcoes:
-			opcao = self.opcoes[num]
+		print(fraseInicial)
+		for num in self._opcoes:
+			opcao = self._opcoes[num]
 			print(num, '-', opcao)
 		("--------------")
 
 	def pedirEscolha(self):
-		self.escolha = int(input("Digite um número:"))
+		self._escolha = int(input("Digite um número:"))
 
 	def getEscolha(self):
-		return self.escolha
+		return self._escolha

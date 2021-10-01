@@ -6,7 +6,7 @@ class Inspetor(object):
 		self._letrasErradas = []
 
 	def setPalavraSecreta(self, palavra):
-		self._palavraSecreta = palavras
+		self._palavraSecreta = palavra
 		
 	def giveLetra(self, letra):
 		self._letrasDigitadas.append(letra)

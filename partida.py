@@ -24,12 +24,12 @@ class Partida(object):
 		self._definirTema()
 		self._definirPalavra()
 
-		self._inspetor.setPalavraSecreta(palavra)
-		self._jogarSolor()
+		self._inspetor.setPalavraSecreta(self._palavra)
+		self._jogarSolo()
 
 	def _jogarSolo(self):
 		jogador = self._jogadores[0]
-		placar = jogador.getPlacar()
+		placar = jogador.getPlacarAtual()
 
 		numDeletras = len(self._palavra)
 
@@ -37,7 +37,7 @@ class Partida(object):
 		sentence2 = placar.getAcertos() < numDeletras
 
 		while sentence1 and sentence2:
-			self.forca.printForca()
+			self._forca.printForca()
 			print("Tema:", self._tema)
 
 			self._inspetor.printAcertos()
@@ -61,7 +61,7 @@ class Partida(object):
 			sentence2 = placar.getAcertos() < numDeletras
 			
 			if sentence1 == False:
-				forca.printForca()
+				self._forca.printForca()
 				print("A palavra era:", self._palavra)
 				print("Game Over!")
 
@@ -94,13 +94,14 @@ class Partida(object):
 
 	def _definirTema(self):
 		self._menuTema = MenuTema()
+		self._menuTema.printOpcoes(fraseInicial ="Escolha um tema:")
 		self._menuTema.pedirEscolha()
 		self._menuTema.definirTema()
 		self._tema = self._menuTema.getTema()
 
 	def _definirPalavra(self):
 		self._menuTema.definirPalavra()
-		self._palavra = menuPalavra.getPalavra()
+		self._palavra = self._menuTema.getPalavra()
 
 	def _inspecionar(self):
 		pass
