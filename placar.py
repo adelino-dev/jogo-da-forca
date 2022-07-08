@@ -1,22 +1,31 @@
-class Placar(object):
-	def __init__(self):
-		self._acertos = 0
-		self._erros = 0
+acertos = 0
+erros = 0
+letrasTentadas = []
+letrasDescobertas = []
 
-	def getAcertos(self):
-		return self._acertos
+def printPlacar():
+  """
+  Imprime na tela o placar atual.
+  """
+  print("Palavra secreta:", letrasDescobertas)
+  print("Letras tentadas:", letrasTentadas)
+  print("Acertos:", acertos)
+  print("Erros:", erros)
+  print()
 
-	def getErros(self):
-		return self._erros
 
-	def setAcertos(self, numero):
-		self._acertos = numero
+def setPlacar(a, e, lt, ld):
+  """
+  a --> acertos (int),
+  e --> erros (int),
+  lt --> letras tentadas (list),
+  ld --> letras descobertas (list),
 
-	def setErros(self, numero):
-		self._erros = numero
-
-	def addAcerto(self):
-		self._acertos += 1
-
-	def addErro(self):
-		self._erros += 1
+  ______________
+  Altera o valor das variáveis do placar.
+  """
+  global acertos, erros, letrasTentadas, letrasDescobertas
+  acertos = a
+  erros = e
+  letrasTentadas = lt
+  letrasDescobertas = " ".join(ld) #transforma em string
