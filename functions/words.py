@@ -1,8 +1,8 @@
 #WORD LISTS BY THEME:
-animals = open("words/animals.txt", "r", encoding="utf8").readlines()
-fruits = open("words/fruits.txt", "r", encoding="utf8").readlines()
-objects = open("words/objects.txt", "r", encoding="utf8").readlines()
-countries = open("words/countries.txt", "r", encoding="utf8").readlines()
+animals = open("./words/animals.txt", "r", encoding="utf8").readlines()
+fruits = open("./words/fruits.txt", "r", encoding="utf8").readlines()
+objects = open("./words/objects.txt", "r", encoding="utf8").readlines()
+countries = open("./words/countries.txt", "r", encoding="utf8").readlines()
 
 #THEMES WITH SECRET WORDS:
 words = {

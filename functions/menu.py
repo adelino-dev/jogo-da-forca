@@ -1,6 +1,6 @@
 import os
-from score import printScore, setScore
-from words.words import convertWord
+from .score import printScore, setScore
+from .words import convertWord
 
 def askLetter(typedLetters):
   """

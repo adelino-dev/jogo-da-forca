@@ -1,6 +1,6 @@
-from words.words import words, convertWord
-from play import start
-from raffle import *
+from functions.words import words, convertWord
+from functions.play import *
+from functions.raffle import *
 
 #Condition to play:
 _play = True

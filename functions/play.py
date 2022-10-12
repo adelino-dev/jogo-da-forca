@@ -1,8 +1,7 @@
-from hangman import printHangman
-from raffle import drawWord, drawTheme
-from menu import *
-
-  
+from .raffle import drawWord, drawTheme
+from .menu import *
+from .hangman import *
+ 
 def start(theme, secretWord):
   """
    theme --> string containing the theme of the round.
