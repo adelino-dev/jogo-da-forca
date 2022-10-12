@@ -1,57 +1,57 @@
-from forca import printForca
-from sorteador import sortearPalavra, sortearTema
+from hangman import printHangman
+from raffle import drawWord, drawTheme
 from menu import *
 
   
-def start(tema, palavraSecreta):
+def start(theme, secretWord):
   """
-  tema --> string contendo o tema da rodada.
-  palavraSecreta --> string contendo a palavra secreta da rodada.
-  ----------------------
+   theme --> string containing the theme of the round.
+   secretWord --> string containing the secret word of the round.
+   ----------------------
   
-  Dados um tema e uma palavra secreta, inicia o jogo.
+   Given a theme and a secret word, the game starts.
   """
   
-  clear() #Limpa a tela para iniciar o jogo
+  clear() #Clear the screen to start the game
   
-  #PLACAR DO JOGO
-  acertos = 0
+  #GAME SCORE:
+  hits = 0
   erros = 0
-  letrasDigitadas = []
-  letrasDescobertas = ["_"]*len(palavraSecreta)
+  typedLetters = []
+  discoveredLetters = ["_"]*len(secretWord)
 
-  setPlacar(acertos, erros, letrasDigitadas, letrasDescobertas)
+  setScore(hits, erros, typedLetters, discoveredLetters)
   
-  #COMEÇANDO A RODADA:
-  maximoAcertos = len(palavraSecreta) #Quantidade máxima de letras que é possível acertar
+  #STARTING THE ROUND:
+  maxHits= len(secretWord) #Maximum number of letters that it is possible to hit
   
   while (erros < 6):
-    printHeader(tema)
-    printForca(erros)
-    printPlacar()
+    printHeader(theme)
+    printHangman(erros)
+    printScore()
     
-    letraDigitada = pedirLetra(letrasDigitadas)
+    typedLetter = askLetter(typedLetters)
     
-    if letraDigitada in palavraSecreta:
-      #SUBSTITUINDO OS TRACINHOS PELA LETRA DESCOBERTA: 
-      updateAcertadas(letraDigitada, letrasDescobertas, palavraSecreta)
-      acertos += palavraSecreta.count(letraDigitada)
-      if acertos == maximoAcertos:
-        setPlacar(acertos, erros, letrasDigitadas, letrasDescobertas)
+    if typedLetter in secretWord:
+      #REPLACING THE DASHES FOR THE LETTER DISCOVERED: 
+      updateHits(typedLetter, discoveredLetters, secretWord)
+      hits += secretWord.count(typedLetter)
+      if hits == maxHits:
+        setScore(hits, erros, typedLetters, discoveredLetters)
         clear()
         break
 
     else:
       erros += 1
       
-    #Atualizando os valores do placar:  
-    setPlacar(acertos, erros, letrasDigitadas, letrasDescobertas)
+    #Updating the scoreboard values:
+    setScore(hits, erros, typedLetters, discoveredLetters)
     clear()
 
-  #IMPRESSÕES DO FINAL DO JOGO:
-  printHeader(tema)
-  printForca(erros)
-  printPlacar()
-  printResultado(palavraSecreta, acertos, erros)
+  #FINAL GAME IMPRESSIONS:
+  printHeader(theme)
+  printHangman(erros)
+  printScore()
+  printResult(secretWord, hits, erros)
   print()
   print("---------------FIM DE JOGO---------------")

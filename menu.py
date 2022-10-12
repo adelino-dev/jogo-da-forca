@@ -1,134 +1,136 @@
 import os
-from placar import printPlacar, setPlacar
-from palavras.palavras import convertPalavra
+from score import printScore, setScore
+from words.words import convertWord
 
-def pedirLetra(letrasDigitadas):
+def askLetter(typedLetters):
   """
-  letrasDigitadas --> uma lista contendo
-  as letras que já foram digitadas
+  typedLetters --> a list containing
+  letters that have already been typed
   --------------------------
-  Pede para o usuário digitar uma letra,
-  adiciona essa letra na lista, 
-  põe a lista em ordem alfabética e
-  retorna a nova letra digitada.
+  Asks the user to type a letter,
+  add that letter to the list,
+  put the list in alphabetical order and
+  returns the new letter typed.
   """
 
-  letraDigitada = input("Digite uma letra:").upper()
-  letraDigitada = validarLetra(letraDigitada, letrasDigitadas)
+  entry = input("Digite uma letra:").upper()
+  typedLetter = validateLetter(entry, typedLetters)
 
-  #Adicionando entrada na lista:
-  letrasDigitadas.append(letraDigitada)
+  #Adding the entry to the list:
+  typedLetters.append(typedLetter)
 
-  #Ordenando a lista:
-  letrasDigitadas.sort()
+  #Sorting the list:
+  typedLetters.sort()
 
-  #Retornando a letra digitada:
-  return letraDigitada
+  #Returning the typed letter:
+  return typedLetter
 
 
-def validarLetra(entrada, letrasDigitadas):
+def validateLetter(entry, typedLetters):
   """
-  entrada --> uma string para análise
-  letrasDigitadas --> uma lista contendo as letras já digitadas.
+  entry --> a string for parsing
+  typedLetters --> a list containing the letters already typed.
   --------------------------
   
-  Analisa se a entrada é válida, tendo como exigência que a entrada seja apenas uma
-  letra e que essa letra não tenha sido digitada antes.
+  Analyzes whether the input is valid, with the requirement
+  that the input is only one letter and that this letter has not been typed before.
   
-  Para isso, analisa se a entrada realmente é apenas UMA letra e não uma palavra.
-  Também analisa se nessa entra há outros caracteres como números e/ou pontuações.
-  Ademais, verifica se essa entrada já está na lista de letras digitadas ou não.
+  For this, it analyzes if the input really is just ONE letter and not a word. 
+  It also analyzes whether this entry contains other characters such as numbers 
+  and/or punctuation. Also, it checks whether this entry is already in the list 
+  of typed letters or not.
   
-  Caso não cumpra às exigências, pede para o usuário digitar novamente 
-  até que a entrada corresponda às exigências.
+  If it doesn't meet the requirements, 
+  it asks the user to type it again until the input matches the requirements.
 
-  No final, retorna a entrada já validada.
+  At the end, it returns the already validated input.
   """
   
-  entrada = convertPalavra(entrada)#Tira os acentos da palavra
+  entry = convertWord(entry) #Remove accents from the word
   
-  #VALIDANDO ENTRADA:
-  teste1 = not entrada.isalpha() #Analisa se a entrada não é uma letra
-  teste2 = len(entrada) > 1  #Analisa se foi digitada mais que uma letra
-  teste3 = entrada in letrasDigitadas #Analisa se a letra já tinha sido inserida antes
+  #VALIDING ENTRY:
+  test1 = not entry.isalpha() #Analyzes if the input is not a letter
+  test2 = len(entry) > 1  #Analyzes if more than one letter was typed
+  test3 = entry in typedLetters #Analyzes if the letter had already been entered before
   
-  while teste1 or teste2 or teste3:
+  while test1 or test2 or test3:
     
-    if teste1:
+    if test1:
       print("   Ops! Digite apenas uma LETRA!")
     
-    elif teste2:
+    elif test2:
       print("   Ops! Você você digitou algo amais que uma letra...")
   
-    elif teste3:
+    elif test3:
       print("   Ops! Você já digitou essa letra...")
     
-    entrada = input("   Digite uma letra novamente:").upper()
+    entry = input("   Digite uma letra novamente:").upper()
     print()
     
-    entrada = convertPalavra(entrada)#Tira os acentos da palavra
+    entry = convertWord(entry)#Remove accents from the word
     
-    teste1 = not entrada.isalpha() #Analisa se a entrada não é uma letra
-    teste2 = len(entrada) > 1  #Analisa se foi digitada mais que uma letra
-    teste3 = entrada in letrasDigitadas #Analisa se a letra já tinha sido inserida antes
+    test1 = not entry.isalpha() #Analyzes if the input is not a letter
+    test2 = len(entry) > 1  #Analyzes if more than one letter was typed
+    test3 = entry in typedLetters #checks if the letter had already been entered before
   
-  return entrada
+  return entry
 
-def printHeader(tema):
+def printHeader(theme):
   """
-  tema --> tema da rodada.
+  theme --> round theme.
   
   ----------------------
-  Imprime o cabeçalho do jogo.
+  Print the game header.
   """
   print()
   print("********** JOGO DA FORCA **********")
   print()
-  print("TEMA:", tema)
+  print("TEMA:", theme)
 
-def printResultado(palavraSecreta, acertos, erros):
+def printResult(secretWord, hits, erros):
   """
-  palavraSecreta --> uma sintrg com a palavra secreta da rodada;
-  acertos --> quantidade de letras acertadas (int)
-  erros -> quantidade de letras erradas (int)
+  secretWord --> a string with the secret word of the round;
+  hits --> number of hits (int)
+  errors -> number of wrong letters (int)
   ----------------------------------
-  Analisa se o jogador já ganhou ou perdeu.
-  Se sim, imprime na tela o resultado final do jogo.
+  Analyzes whether the player has already won or lost.
+  If yes, prints the final result of the game on the screen.
   """
   
-  if acertos == len(palavraSecreta):
+  if hits == len(secretWord):
     print("PARABÉNS VOCÊ GANHOU!!")
     
   if erros == 6:
     print("GAME OVER! VOCÊ PERDEU O JOGO.")
-    print("A palavra era:", palavraSecreta)
+    print("A palavra era:", secretWord)
 
 
-def updateAcertadas(letraDigitada, letrasDescobertas, palavraSecreta):
+def updateHits(typedLetter, discoveredLetters, secretWord):
   """
-  letraDigitada --> string contendo uma letra
-  letrasDescobertas --> lista de letras descobertas
-  palavraSecreta --> string contendo a palavra secreta
+  string containing a letter
+  discoveredLetters --> list of discovered letters
+  secretWord --> string containing the secret word
   
   ________________________________
-  Troca os devidos tracinhos da lista de letras descobertas pela 
-  letra digitada, se a letra estiver na palavra secreta.
+  Swap the proper dashes from the list of discovered letters for the
+  typed letter, if the letter is in the secret word.
   """
-  if letraDigitada in palavraSecreta:
-    i = 0 #índice (posição da letra)
-    for letra in palavraSecreta:
-      if letra == letraDigitada:
-        letrasDescobertas[i] = letraDigitada
+
+  if typedLetter in secretWord:
+    i = 0 #index
+    for letter in secretWord:
+      if letter == typedLetter:
+        discoveredLetters[i] = typedLetter
       i += 1
 
-#Criando função para limpar a tela:
+#Creating function to clear the screen:
 def clear():
   """
-  Limpa a tela.
+  Clear the screen.
   """
   
-  if os.name == "nt": #Se for Windows
+  if os.name == "nt": #if the Operational System is Windows
       os.system("cls") 
     
   else:
-      os.system("clear") 
+      os.system("clear")

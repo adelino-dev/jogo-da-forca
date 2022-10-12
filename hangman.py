@@ -1,10 +1,10 @@
 """
-A forca possui 7 estados que vão desde o estado 0 (forca sem o corpo), 
-até o estado 6 (totalmente enforcado).
+The hangman has 7 states ranging from state 0 (nothing hanged) 
+up to state 6 (fully hanged).
 """
 
-#Estados da Forca:
-estado0 = [
+#Hangman states:
+state0 = [
 "╔════════╗",
 "║        ¥",
 "║", 
@@ -13,7 +13,7 @@ estado0 = [
 "║"
 ]
 
-estado1 = [
+state1 = [
 "╔════════╗",
 "║        ¥",
 "║        O", 
@@ -22,7 +22,7 @@ estado1 = [
 "║"
 ]
 
-estado2 = [
+state2 = [
 "╔════════╗",
 "║        ¥",
 "║        O",
@@ -31,7 +31,7 @@ estado2 = [
 "║"
 ]
 
-estado3 = [
+state3 = [
 "╔════════╗",
 "║        ¥",
 "║        O",
@@ -40,7 +40,7 @@ estado3 = [
 "║"
 ]
 
-estado4 = [
+state4 = [
 "╔════════╗",
 "║        ¥",
 "║        O",
@@ -49,7 +49,7 @@ estado4 = [
 "║"
 ]
 
-estado5 = [
+state5 = [
 "╔════════╗",
 "║        ¥",
 "║        O",
@@ -58,7 +58,7 @@ estado5 = [
 "║"
 ]
 
-estado6 = [
+state6 = [
 "╔════════╗",
 "║        ¥",
 "║        O",
@@ -67,24 +67,25 @@ estado6 = [
 "║"
 ]
 
-estados = {
-  0:estado0, 
-  1:estado1, 
-  2:estado2,
-  3:estado3,
-  4:estado4,
-  5:estado5,
-  6:estado6
+states = {
+  0:state0, 
+  1:state1, 
+  2:state2,
+  3:state3,
+  4:state4,
+  5:state5,
+  6:state6
 }
 
-#FUNÇÃO PARA IMPRIMIR A FORCA:
-def printForca(erros):
+#Function to print the hangman:
+def printHangman(erros):
   """
-  erros --> a quantidade de erros em número inteiro (0 - 6)
-  -------------
+  errors --> the number of errors in integer (0 - 6)
+   -------------
 
-  Dado o número de erros, imprime na tela a forca em seu estado atual.
+   Given the number of errors, prints the hangman in its 
+   current state on the screen.
   """
-  forca = estados[erros]
-  for linha in forca:
-    print(linha)
+  hangman = states[erros]
+  for line in hangman:
+    print(line)
