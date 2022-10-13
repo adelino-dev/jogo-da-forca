@@ -12,7 +12,6 @@
 
 2. Run the file "main.py"
 
-
 ## How to play?
 
 ### Description
@@ -59,3 +58,7 @@ the player will be prompted to enter again.
 5. If the player hits all the letters, he wins. otherwise, he loses.
 
 6. At the end of the game, the player is asked if he wants to play another round.
+
+## UML Class Diagram
+
+![Class Diagram](diagrams/hangman-v01.png)
