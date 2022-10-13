@@ -24,7 +24,7 @@ The Hangman Game is a popular game in which the player must decipher the secret 
 
 2. If the letter is part of the secret word, the player will score a hit. But if not, the error is logged and the hangman will change state.
 
-3. The player can only to do six errors because the hangman has seven states ranging from state 0 (nothing hanged) up to state 6 (fully hanged):
+3. The player can only to do five errors because the hangman has seven states ranging from state 0 (nothing hanged) up to state 6 (fully hanged):
 
 ```
 State 0:    State 1:     State 2:
